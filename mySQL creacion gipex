@@ -1,0 +1,207 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema gipex_db
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema gipex_db
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `gipex_db` DEFAULT CHARACTER SET utf8 ;
+USE `gipex_db` ;
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Usuarios` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellido` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `campoNull` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`nombre`, `apellido`, `correo`, `campoNull`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Tutor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Tutor` (
+  `usuarioTutor` VARCHAR(45) NOT NULL,
+  `contrasenaTutor` VARCHAR(45) NOT NULL,
+  `Usuarios_nombre` VARCHAR(45) NULL,
+  `Usuarios_apellido` VARCHAR(45) NULL,
+  `Usuarios_correo` VARCHAR(45) NULL,
+  `Usuarios_campoNull` VARCHAR(45) NULL,
+  PRIMARY KEY (`usuarioTutor`, `contrasenaTutor`),
+  INDEX `fk_Tutor_Usuarios_idx` (`Usuarios_nombre` ASC, `Usuarios_apellido` ASC, `Usuarios_correo` ASC, `Usuarios_campoNull` ASC) VISIBLE,
+  CONSTRAINT `fk_Tutor_Usuarios`
+    FOREIGN KEY (`Usuarios_nombre` , `Usuarios_apellido` , `Usuarios_correo` , `Usuarios_campoNull`)
+    REFERENCES `gipex_db`.`Usuarios` (`nombre` , `apellido` , `correo` , `campoNull`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Alumno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Alumno` (
+  `usuarioAlumno` VARCHAR(45) NOT NULL,
+  `contrasenaAlumno` VARCHAR(45) NOT NULL,
+  `carrera` VARCHAR(45) NULL,
+  `numeroOfertasSolicitadas` VARCHAR(45) NULL,
+  `notaMedia` VARCHAR(45) NULL,
+  `Usuarios_nombre` VARCHAR(45) NULL,
+  `Usuarios_apellido` VARCHAR(45) NULL,
+  `Usuarios_correo` VARCHAR(45) NULL,
+  `Usuarios_campoNull` VARCHAR(45) NULL,
+  PRIMARY KEY (`usuarioAlumno`, `contrasenaAlumno`),
+  INDEX `fk_Alumno_Usuarios1_idx` (`Usuarios_nombre` ASC, `Usuarios_apellido` ASC, `Usuarios_correo` ASC, `Usuarios_campoNull` ASC) VISIBLE,
+  CONSTRAINT `fk_Alumno_Usuarios1`
+    FOREIGN KEY (`Usuarios_nombre` , `Usuarios_apellido` , `Usuarios_correo` , `Usuarios_campoNull`)
+    REFERENCES `gipex_db`.`Usuarios` (`nombre` , `apellido` , `correo` , `campoNull`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Responsable`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Responsable` (
+  `usuarioResponsable` VARCHAR(45) NOT NULL,
+  `contrasenaResponsable` VARCHAR(45) NOT NULL,
+  `Usuarios_nombre` VARCHAR(45) NULL,
+  `Usuarios_apellido` VARCHAR(45) NULL,
+  `Usuarios_correo` VARCHAR(45) NULL,
+  `Usuarios_campoNull` VARCHAR(45) NULL,
+  PRIMARY KEY (`usuarioResponsable`, `contrasenaResponsable`),
+  INDEX `fk_Responsable_Usuarios1_idx` (`Usuarios_nombre` ASC, `Usuarios_apellido` ASC, `Usuarios_correo` ASC, `Usuarios_campoNull` ASC) VISIBLE,
+  CONSTRAINT `fk_Responsable_Usuarios1`
+    FOREIGN KEY (`Usuarios_nombre` , `Usuarios_apellido` , `Usuarios_correo` , `Usuarios_campoNull`)
+    REFERENCES `gipex_db`.`Usuarios` (`nombre` , `apellido` , `correo` , `campoNull`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+COMMENT = '	';
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Empresa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Empresa` (
+  `cif` INT NOT NULL,
+  `nombreEmpresa` VARCHAR(45) NULL,
+  `descripcionEmpresa` VARCHAR(500) NULL,
+  `Tutor_usuarioTutor` VARCHAR(45) NOT NULL,
+  `Responsable_usuarioResponsable` VARCHAR(45) NULL,
+  PRIMARY KEY (`cif`, `Tutor_usuarioTutor`),
+  INDEX `fk_Empresa_Tutor1_idx` (`Tutor_usuarioTutor` ASC) VISIBLE,
+  INDEX `fk_Empresa_Responsable1_idx` (`Responsable_usuarioResponsable` ASC) VISIBLE,
+  CONSTRAINT `fk_Empresa_Tutor1`
+    FOREIGN KEY (`Tutor_usuarioTutor`)
+    REFERENCES `gipex_db`.`Tutor` (`usuarioTutor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Empresa_Responsable1`
+    FOREIGN KEY (`Responsable_usuarioResponsable`)
+    REFERENCES `gipex_db`.`Responsable` (`usuarioResponsable`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Oferta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Oferta` (
+  `idOferta` INT NOT NULL,
+  `Empresa_cif` INT NOT NULL,
+  `tituloOferta` VARCHAR(45) NULL,
+  `descripcionOferta` VARCHAR(500) NULL,
+  `numeroPlazas` INT NULL,
+  `horario` VARCHAR(500) NULL,
+  `duracionSemanas` INT NULL,
+  PRIMARY KEY (`idOferta`),
+  INDEX `fk_Oferta_Empresa1_idx` (`Empresa_cif` ASC) VISIBLE,
+  CONSTRAINT `fk_Oferta_Empresa1`
+    FOREIGN KEY (`Empresa_cif`)
+    REFERENCES `gipex_db`.`Empresa` (`cif`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`ListaPreferencias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`ListaPreferencias` (
+  `posicionPreferencia` INT NOT NULL,
+  `Alumno_usuarioAlumno` VARCHAR(45) NOT NULL,
+  `Oferta_idOferta` INT NOT NULL,
+  `escritoPresentacion` VARCHAR(500) NULL,
+  `admitido` INT NULL,
+  PRIMARY KEY (`posicionPreferencia`, `Alumno_usuarioAlumno`),
+  INDEX `fk_ListaPreferencias_Alumno1_idx` (`Alumno_usuarioAlumno` ASC) VISIBLE,
+  INDEX `fk_ListaPreferencias_Oferta1_idx` (`Oferta_idOferta` ASC) VISIBLE,
+  CONSTRAINT `fk_ListaPreferencias_Alumno1`
+    FOREIGN KEY (`Alumno_usuarioAlumno`)
+    REFERENCES `gipex_db`.`Alumno` (`usuarioAlumno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ListaPreferencias_Oferta1`
+    FOREIGN KEY (`Oferta_idOferta`)
+    REFERENCES `gipex_db`.`Oferta` (`idOferta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`ListaAsignados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`ListaAsignados` (
+  `idListaAsignados` INT NOT NULL,
+  `Alumno_usuarioAlumno` VARCHAR(45) NOT NULL,
+  `Oferta_idOferta` INT NOT NULL,
+  PRIMARY KEY (`idListaAsignados`),
+  INDEX `fk_ListaAsignados_Alumno1_idx` (`Alumno_usuarioAlumno` ASC) VISIBLE,
+  INDEX `fk_ListaAsignados_Oferta1_idx` (`Oferta_idOferta` ASC) VISIBLE,
+  CONSTRAINT `fk_ListaAsignados_Alumno1`
+    FOREIGN KEY (`Alumno_usuarioAlumno`)
+    REFERENCES `gipex_db`.`Alumno` (`usuarioAlumno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ListaAsignados_Oferta1`
+    FOREIGN KEY (`Oferta_idOferta`)
+    REFERENCES `gipex_db`.`Oferta` (`idOferta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gipex_db`.`Informe`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gipex_db`.`Informe` (
+  `idInforme` INT NOT NULL,
+  `notaFinal` INT NULL,
+  `comentarios` VARCHAR(500) NULL,
+  `Alumno_usuarioAlumno` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idInforme`),
+  INDEX `fk_Informe_Alumno1_idx` (`Alumno_usuarioAlumno` ASC) VISIBLE,
+  CONSTRAINT `fk_Informe_Alumno1`
+    FOREIGN KEY (`Alumno_usuarioAlumno`)
+    REFERENCES `gipex_db`.`Alumno` (`usuarioAlumno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
