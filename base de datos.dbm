@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<database name="new_database">
+</database>
+
+<table name="Empresa">
+	<schema name="public"/>
+	<position x="30" y="680"/>
+	<column name="cif" not-null="true">
+		<type name="varchar" length="9"/>
+	</column>
+	<column name="Nombre" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<constraint name="cif_primarykey" type="pk-constr" factor="10" table="public.&quot;Empresa&quot;">
+		<columns names="cif" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Oferta">
+	<schema name="public"/>
+	<position x="499" y="643"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="numPlazas" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="duracion" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="horario" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<constraint name="id_oferta_primarykey" type="pk-constr" factor="10" table="public.&quot;Oferta&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Usuario">
+	<schema name="public"/>
+	<position x="488" y="7"/>
+	<column name="dni" not-null="true">
+		<type name="varchar" length="9"/>
+	</column>
+	<column name="usuario" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="contraseña" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="correo" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<constraint name="dni_primarykey" type="pk-constr" factor="10" table="public.&quot;Usuario&quot;">
+		<columns names="dni" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Tutor">
+	<schema name="public"/>
+	<position x="28" y="211"/>
+</table>
+
+<table name="Responsable">
+	<schema name="public"/>
+	<position x="897" y="217"/>
+</table>
+
+<table name="Alumno">
+	<schema name="public"/>
+	<position x="485" y="217"/>
+	<column name="notaMedia" not-null="true">
+		<type name="float"/>
+	</column>
+	<column name="carrera" not-null="true">
+		<type name="varchar"/>
+	</column>
+</table>
+
+<table name="Informe">
+	<schema name="public"/>
+	<position x="484" y="459"/>
+	<column name="id" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="nota" not-null="true">
+		<type name="float"/>
+	</column>
+	<constraint name="id_primarykey" type="pk-constr" factor="10" table="public.&quot;Informe&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ListaAsignados">
+	<schema name="public"/>
+	<position x="861" y="468"/>
+</table>
+
+<relationship name="Empresa_has_many_Tutor" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="0" constr-indexes="0"
+	 src-table="public.&quot;Empresa&quot;"
+	 dst-table="public.&quot;Tutor&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Empresa_has_many_Oferta" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="6" constr-indexes="1"
+	 src-table="public.&quot;Empresa&quot;"
+	 dst-table="public.&quot;Oferta&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="Preferencia">
+	<schema name="public"/>
+	<position x="1191" y="469"/>
+</table>
+
+<relationship name="Informe_has_one_Oferta" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1,2"
+	 src-table="public.&quot;Oferta&quot;"
+	 dst-table="public.&quot;Informe&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Tutor_inherits_Usuario" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 src-table="public.&quot;Tutor&quot;"
+	 dst-table="public.&quot;Usuario&quot;">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="Alumno_inherits_Usuario" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 src-table="public.&quot;Alumno&quot;"
+	 dst-table="public.&quot;Usuario&quot;">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="Responsable_inherits_Usuario" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 src-table="public.&quot;Responsable&quot;"
+	 dst-table="public.&quot;Usuario&quot;">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="Informe_has_one_Tutor" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="3,4"
+	 src-table="public.&quot;Tutor&quot;"
+	 dst-table="public.&quot;Informe&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Informe_has_one_Alumno" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="5" constr-indexes="5,6"
+	 src-table="public.&quot;Alumno&quot;"
+	 dst-table="public.&quot;Informe&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="ListaAsignados_has_one_Alumno" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="0" constr-indexes="0,1"
+	 src-table="public.&quot;Alumno&quot;"
+	 dst-table="public.&quot;ListaAsignados&quot;"
+	 src-required="true" dst-required="false"	 identifier="true"
+/>
+
+<relationship name="ListaPreferencias_has_one_Alumno" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="0" constr-indexes="0,1"
+	 src-table="public.&quot;Alumno&quot;"
+	 dst-table="public.&quot;Preferencia&quot;"
+	 src-required="true" dst-required="false"	 identifier="true"
+/>
+
+<relationship name="Oferta_has_many_Preferencia" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="1" constr-indexes="2"
+	 src-table="public.&quot;Oferta&quot;"
+	 dst-table="public.&quot;Preferencia&quot;"
+	 src-required="true" dst-required="false"	 identifier="true"
+>
+	<label ref-type="src-label">
+		<position x="5.00002" y="4.45746"/>
+	</label>
+</relationship>
+
+<relationship name="Oferta_has_many_ListaAsignados" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="1" constr-indexes="2,3"
+	 src-table="public.&quot;Oferta&quot;"
+	 dst-table="public.&quot;ListaAsignados&quot;"
+	 src-required="true" dst-required="false"	 identifier="true"
+/>
+
+</dbmodel>
