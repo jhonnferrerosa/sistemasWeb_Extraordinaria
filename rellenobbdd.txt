@@ -1,0 +1,176 @@
+##empresas es el 0.
+##marcajes es el 100. 
+##proyectos es el 200.
+##usuarios es el 300.
+##usuarios_proyectos es el 400. 
+
+INSERT INTO empresa (id_empresa, nombre_empresa)
+VALUES 
+(1, 'Acme Corporation'),
+(2, 'Beta Industries'),
+(3, 'Gamma Corp.'),
+(4, 'Delta LLC'),
+(5, 'Epsilon Enterprises'),
+(6, 'Zeta Solutions'),
+(7, 'Theta Technologies'),
+(8, 'Iota Innovations'),
+(9, 'Kappa Co.'),
+(10, 'Lambda Labs');
+
+## Proyectos para Acme Corporation
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(201, 1, 'comercio electrónico'),
+(202, 1, 'seguimiento de inventario');
+## Proyectos para Beta Industries
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(203, 2, 'desarrollo de productos'),
+(204, 2, 'capacitación para empleados');
+## Proyectos para Gamma Corp.
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(205, 3, 'Desarrollo aplicación móvil'),
+(206, 3, 'eficiencia del negocio');
+## Proyectos para Delta LLC
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(207, 4, 'seguridad cibernética'),
+(208, 4, 'Investigación productos');
+## Proyectos para Epsilon Enterprises
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(209, 5, 'Implementación marketing'),
+(210, 5, 'seguimiento de gastos');
+## Proyectos para Zeta Solutions
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(211, 6, 'gestión de proyectos'),
+(212, 6, 'gestión de inventarios');
+## Proyectos para Theta Technologies
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(213, 7, 'inteligencia artificial'),
+(214, 7, 'búsqqueda de empleados');
+## Proyectos para Iota Innovations
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(215, 8, ' energía renovable'),
+(216, 8, 'sistema marketing');
+## Proyectos para Kappa Co.
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(217, 9, 'gestión de tareas'),
+(218, 9, 'Renovación inventario');
+## Proyectos para Lambda Labs
+INSERT INTO proyectos (id_proyecto, id_empresa, nombre) VALUES 
+(219, 10, 'Desarllo de blockchainl'),
+(220, 10, 'apoyo pequeñas y medianas');
+
+##usuarios
+INSERT INTO `usuarios` (`id_user`, `username`, `password`, `dni`, `nombre`, `apellidos`, `fecha_alta`, `fecha_baja`, `tipo_usuario`) VALUES 
+('301', 'usuario301', 'usuario301', '00000301U', 'pepe', 'pepe', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('302', 'usuario302', 'usuario302', '00000302U', 'ana', 'ana', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('303', 'usuario303', 'usuario303', '00000303U', 'isabel', 'isabel', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('304', 'usuario304', 'usuario304', '00000304U', 'maria', 'maria', '2023-02-27 19:26:42.000000', NULL, 'U'),
+
+('305', 'usuario305', 'usuario305', '00000305U', 'pilar', 'pilar', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('306', 'usuario306', 'usuario306', '00000306U', 'cristina', 'cristina', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('307', 'usuario307', 'usuario307', '00000307U', 'angeles', 'angeles', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('308', 'usuario308', 'usuario308', '00000308U', 'laura', 'laura', '2023-02-27 19:26:42.000000', NULL, 'U'),
+
+('309', 'usuario309', 'usuario309', '00000309U', 'marta', 'marta', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('310', 'usuario310', 'usuario310', '00000310U', 'antonia', 'antonia', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('311', 'usuario311', 'usuario311', '00000311U', 'lucia', 'lucia', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('312', 'usuario312', 'usuario312', '00000312U', 'sara', 'sara', '2023-02-27 19:26:42.000000', NULL, 'U'),
+
+('313', 'usuario313', 'usuario313', '00000313U', 'antonio', 'antonio', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('314', 'usuario314', 'usuario314', '00000314U', 'elena', 'elena', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('315', 'usuario315', 'usuario315', '00000315U', 'maria carmen', 'maria carmen', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('316', 'usuario316', 'usuario316', '00000316U', 'josefa', 'josefa', '2023-02-27 19:26:42.000000', NULL, 'U'),
+
+('317', 'usuario317', 'usuario317', '00000317U', 'david', 'david', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('318', 'usuario318', 'usuario318', '00000318U', 'jose', 'jose', '2023-02-27 19:26:42.000000', NULL, 'U'),
+('319', 'usuario319', 'usuario319', '00000319U', 'daniel', 'daniel', '2023-02-27 19:26:42.000000', NULL, 'U'), 
+('320', 'usuario320', 'usuario320', '00000320U', 'alberto', 'alberto', '2023-02-27 19:26:42.000000', NULL, 'U'); 
+
+##van a haber 5 administradoes, para administrar solamente las 5 primeras empresas. 
+INSERT INTO `usuarios` (`id_user`, `username`, `password`, `dni`, `nombre`, `apellidos`, `fecha_alta`, `fecha_baja`, `tipo_usuario`) VALUES 
+('351', 'admin1', 'admin1', '00000351A', 'juan', 'juan ', '2023-02-27 19:44:08.000000', NULL, 'A'),
+('352', 'admin2', 'admin2', '00000352A', 'lila', 'lila', '2023-02-27 19:44:08.000000', NULL, 'A'),
+('353', 'admin3', 'admin3', '00000353A', 'carlos', 'carlos', '2023-02-27 19:44:08.000000', NULL, 'A'),
+('354', 'admin4', 'admin4', '00000354A', 'adela', 'adela ', '2023-02-27 19:44:08.000000', NULL, 'A'),
+('355', 'admin5', 'admin5', '00000355A', 'javier', 'javier ', '2023-02-27 19:44:08.000000', NULL, 'A');
+
+##usuarios_proyectos. para introducir los administradores. 
+####INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('401', '1', '201', '2023-05-30 14:18:05.000000', '2023-05-30 14:18:05.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('402', '351', '201', '2023-05-30 14:18:56.000000', '2023-05-30 14:18:56.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('403', '352', '202', '2023-05-30 14:18:56.000000', '2023-05-30 14:18:56.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('404', '353', '203', '2023-05-30 14:18:56.000000', '2023-05-30 14:18:56.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('405', '354', '204', '2023-05-30 14:18:56.000000', '2023-05-30 14:18:56.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('406', '355', '205', '2023-05-30 14:18:56.000000', '2023-05-30 14:18:56.000000'); 
+##usuarios_proyectos. para introducir los empleados. 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('407', '301', '201', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('408', '302', '201', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('409', '303', '201', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('410', '304', '201', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('411', '305', '202', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('412', '306', '202', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('413', '307', '202', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('414', '308', '202', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('415', '309', '203', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('416', '310', '203', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('417', '311', '203', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('418', '312', '203', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('419', '313', '204', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('420', '314', '204', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('421', '315', '204', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('422', '316', '204', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('423', '317', '205', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('424', '318', '205', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('425', '319', '205', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+INSERT INTO `usuarios_proyectos` (`id`, `id_user`, `id_proyecto`, `fecha_alta`, `fecha_baja`) VALUES ('426', '320', '205', '2023-05-30 14:29:41.000000', '2023-05-30 14:29:41.000000'); 
+
+##marcajes para usuario
+##INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (100, '2023-05-30 17:29:42.000000', 'E', '1'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (101, '2023-05-30 17:29:42.000000', 'E', '301');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (102, '2023-05-30 17:29:42.000000', 'E', '302');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '303');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '304'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '305'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '306'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '307'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '308'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '309'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '310');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '311'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '312');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '313'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '314'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '315'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '316'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '317'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '318');
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '319'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '320');       
+#marcajes para admiistrador 
+
+
+##estos Marcajes No los ddebe de hacer el administrador, ya que en su monitor de trabajo, no le sale la opcion de ralizar marcajes. 
+
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '351'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '352'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '353'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '354'); 
+INSERT INTO `marcajes` (`id`, `fecha`, `tipo_marcaje`, `id_usuario`) VALUES (null, '2023-05-30 17:29:42.000000', 'E', '355'); 
+
+#este es un empleado, que se tiene de usuario como usuario y contrasena, los mismos que un admin. Es para comprobar que 
+#aunque se tenga el mismo usuario y contraseña, la pagina loggin distingue el checkbox. 
+INSERT INTO `usuarios` (`id_user`, `username`, `password`, `dni`, `nombre`, `apellidos`, `fecha_alta`, `fecha_baja`, `tipo_usuario`) VALUES ('3', 'admin', 'admin', '88888888Z', 'miAdmin', 'miAdmin', '2023-06-03 15:53:48.000000', NULL, 'U'); 
+
+
+
+##esto es solo para borrar todos los datos de la bbdd. 
+DELETE from empresa; 
+delete from marcajes; 
+delete from proyectos;
+delete FROM usuarios;
+delete from usuarios_proyectos;
+
+
+
