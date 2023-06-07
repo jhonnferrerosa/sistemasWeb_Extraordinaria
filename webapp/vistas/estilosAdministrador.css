@@ -1,0 +1,56 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 23-ene-2022, 18:17:25
+    Author     : 34642
+*/
+
+@font-face{  /* este es el selector que permite insertar en nuestra pagina esa fuente que esta en la raiz del servidor */
+	font-family:"mifuente";
+	src:url(fuentes/carolingia.ttf);
+}
+#cabezera{
+	color:#900;
+	/*background:#999; */
+	font:bold 20px "mifuente";
+	text-align:center;
+	margin:15px auto;
+	padding:15px; 
+	border:7px solid #F93;
+	border-radius:25px;
+	box-shadow:#CCC 7px 7px 10px;
+	text-shadow:#CCC 7px 7px 3px;
+	background:-moz-radial-gradient(center, ellipse,  #F03, #FC3);
+}
+#barranavegacion{
+	background:#999;
+	color:#F00;
+}
+#barralateral{
+	color:#666;
+	background:#CCC;
+	float:left;
+	height:1115px;
+        /*  white-space: 200px;   */ 
+        padding-right: 150px;
+}
+#contenido{
+	margin:15px auto;
+	background:#E3C504;
+	margin-left:300px;
+	padding-left:20px;
+	border-top:1px dashed #000066;
+	width:84%;
+	padding-top:10px;
+	height:1100px;
+}
+#pie{
+	background:#999;
+	padding-top:40px;
+	padding-bottom:40px;
+	clear:left;
+	font:1.6 em Georgia, "Times New Roman", Times, serif;
+	padding:30px;
+}
